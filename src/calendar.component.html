@@ -1,0 +1,32 @@
+<header>
+  <div class="year">{{year}}</div>
+  <div class="formated-date">{{formatedDate}}</div>
+</header>
+
+<section>
+
+  <div class="arrows">
+    <ion-icon name="arrow-back" (click)="prevMonth()"></ion-icon>
+    <div class="formated-date">{{calendarDate}}</div>
+    <ion-icon name="arrow-forward" (click)="nextMonth()"></ion-icon>
+  </div>
+
+  <div class="calendar">
+    <div class="weekdays">
+      <span *ngFor="let day of weekdays">{{day}}</span>
+    </div>
+    <div class="weeks">
+      <div class="week" *ngFor="let week of daysInMonth">
+        <span *ngFor="let day of week"
+            (click)="dayClicked(day)"
+            [class.today]="isToday(day)"
+            [class.selected]="isSelected(day)"
+            [class.disabled]="isDisabled(day)"
+            [class.not-current]="isntCurrent(day)">
+          {{ day.day }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+</section>
